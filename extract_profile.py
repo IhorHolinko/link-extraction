@@ -5,10 +5,13 @@
 import json
 import lxml.html
 import requests
+import sys
 
+
+arg = sys.argv[1]
 
 # open the json file and assign to variable
-with open('data.json', 'r') as f:
+with open(arg, 'r') as f:
     jd = f.read()
 
 
@@ -38,5 +41,5 @@ if len(jd_parsed) != 0:
         adr = root.xpath('//div[@class="column-right__inner"]/text()')
 
         # open a file to write extracted inforamation
-        with open('{}'.format(p_id), 'w') as f:
+        with open('{}.txt'.format(p_id), 'w') as f:
             f.write(str(adr))
